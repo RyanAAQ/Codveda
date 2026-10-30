@@ -16,20 +16,27 @@ public class NumberGuesser {
 
         while (userGuess != numberToGuess) {
             System.out.print("Enter your guess: ");
+
+            if (!input.hasNextInt()) {
+                System.out.println("Please enter a valid integer.");
+                input.next();
+                continue;
+            }
+
             userGuess = input.nextInt();
             attempts++;
 
-            if(attempts == 5){
-                System.out.println("You lose, Try again later");
+            if (attempts >= 5) {
+                System.out.println("You lose! The number was " + numberToGuess);
                 break;
             }
 
             if (userGuess < numberToGuess) {
                 System.out.println("Too low! Try again.");
-            } else if (userGuess > numberToGuess) {
-                System.out.println("Too high! Try again.");
-            } else {
-                System.out.println("Congratulations! You've guessed the number!");
+        } else if (userGuess > numberToGuess) {
+            System.out.println("Too high! Try again.");
+         } else {
+             System.out.println("Congratulations! You've guessed the number!");
             }
 
         }
